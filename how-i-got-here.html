@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #3a3a3a;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .banner {
+            height: 50px; /* Adjust this value to control banner height */
+            position: relative;
+        }
+        .social-links {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .social-links a:hover {
+            color: #bbbbbb;
+        }
+        .content-wrapper {
+            background-color: rgba(42, 42, 42, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .content {
+            text-align: center;
+        }
+        .nav-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+        }
+        .profile-pic {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-item {
+            position: absolute;
+            width: 100px;
+            text-align: center;
+        }
+        .nav-item a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="banner">
+                <div class="social-links">
+                    <a href="https://github.com/rhizonymph" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.youtube.com/channel/UCUq5EEAc8-fvqnQDVK2cnLw" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/rhizonymph" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://rhizonymph.bandcamp.com" target="_blank"><i class="fab fa-bandcamp"></i></a>
+                    <a href="https://soundcloud.com/rhizonymph" target="_blank"><i class="fab fa-soundcloud"></i></a>
+                    <a href="https://zora.co/rhizonymph" target="_blank"><img src="zorb.png" alt="Zora" style="width: 24px; height: 24px; vertical-align: middle;"></a>
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <div class="nav-container">
+                    <div class="profile-pic">
+                        <img src="https://avatars.githubusercontent.com/u/82485126?s=400&u=509be5fe507d70ed0e9d7baf04f6a77e94de4a09&v=4" alt="Profile Picture">
+                    </div>
+                    <div class="nav-item" style="top: 0%; left: 50%; transform: translateX(-50%);">
+                        <a href="index.html">Who am I?</a>
+                    </div>
+                    <div class="nav-item" style="top: 25%; right: 5%;">
+                        <a href="what-i-do.html">What do I do?</a>
+                    </div>
+                    <div class="nav-item" style="bottom: 15%; right: 10%;">
+                        <a href="why-care.html">Why care?</a>
+                    </div>
+                    <div class="nav-item" style="bottom: 15%; left: 10%;">
+                        <a href="how-i-got-here.html">How did I get here?</a>
+                    </div>
+                    <div class="nav-item" style="top: 25%; left: 5%;">
+                        <a href="inspirations.html">Who inspires<br>my work?</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h1>How did I get here?</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut auctor lacus. Sed nulla felis, pretium sed mollis varius, rhoncus sit amet eros.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
