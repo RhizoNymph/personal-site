@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
+    <title>Nymph - Personal Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
@@ -19,7 +19,6 @@
             padding: 20px;
         }
         .card {
-            
             background-size: cover;
             background-position: center;
             border: 1px solid #3a3a3a;
@@ -90,6 +89,12 @@
             font-weight: bold;
             font-size: 0.9em;
         }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -111,27 +116,57 @@
                         <img src="https://avatars.githubusercontent.com/u/82485126?s=400&u=509be5fe507d70ed0e9d7baf04f6a77e94de4a09&v=4" alt="Profile Picture">
                     </div>
                     <div class="nav-item" style="top: 0%; left: 50%; transform: translateX(-50%);">
-                        <a href="index.html">Who am I?</a>
+                        <a href="#who-am-i">Who am I?</a>
                     </div>
                     <div class="nav-item" style="top: 25%; right: 5%;">
-                        <a href="what-i-do.html">What do I do?</a>
+                        <a href="#what-i-do">What do I do?</a>
                     </div>
                     <div class="nav-item" style="bottom: 15%; right: 10%;">
-                        <a href="why-care.html">Why care?</a>
+                        <a href="#why-care">Why care?</a>
                     </div>
                     <div class="nav-item" style="bottom: 15%; left: 10%;">
-                        <a href="how-i-got-here.html">How did I get here?</a>
+                        <a href="#how-i-got-here">How did I get here?</a>
                     </div>
                     <div class="nav-item" style="top: 25%; left: 5%;">
-                        <a href="inspirations.html">Who inspires<br>my work?</a>
+                        <a href="#inspirations">Who inspires<br>my work?</a>
                     </div>
                 </div>
                 <div class="content">
-                    <h1>Who am I?</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut auctor lacus. Sed nulla felis, pretium sed mollis varius, rhoncus sit amet eros.</p>
+                    <div id="who-am-i" class="section active">
+                        <h1>Who am I?</h1>
+                        <p>My name is Nymph.</p>
+                    </div>
+                    <div id="what-i-do" class="section">
+                        <h1>What do I do?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div id="why-care" class="section">
+                        <h1>Why care?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div id="how-i-got-here" class="section">
+                        <h1>How did I get here?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div id="inspirations" class="section">
+                        <h1>Who inspires my work?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.nav-item a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
