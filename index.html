@@ -66,9 +66,12 @@
         }
         .nav-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             margin: 30px auto;
+            background-image: url('./art/alchemical.png');
+            background-size: cover;
+            background-position: center;
         }
         .profile-pic {
             position: absolute;
@@ -79,6 +82,7 @@
             height: 100px;
             border-radius: 50%;
             overflow: hidden;
+            cursor: pointer;
         }
         .profile-pic img {
             width: 100%;
@@ -89,6 +93,7 @@
             position: absolute;
             width: 100px;
             text-align: center;
+            background-color: rgba(0, 0, 0, 1); /* Semi-transparent black background */
         }
         .nav-item a {
             color: #ffffff;
@@ -137,6 +142,90 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://unpkg.com/embla-carousel/embla-carousel.min.css">
+       <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+       <style>
+       .art-header {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           margin-bottom: 20px;
+       }
+
+       .embla__button {
+           background: rgba(0, 0, 0, 0.5);
+           color: white;
+           border: none;
+           padding: 10px;
+           cursor: pointer;
+       }
+
+       .embla__button:hover {
+           background: rgba(0, 0, 0, 0.7);
+       }
+
+       .embla__button:disabled {
+           opacity: 0.5;
+           cursor: not-allowed;
+       }
+        .embla {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .embla__viewport {
+            overflow: hidden;
+        }
+        .embla__container {
+            display: flex;
+        }
+        .embla__slide {
+            flex: 0 0 100%;
+            min-width: 0;
+            position: relative;
+        }
+        .embla__slide__img {
+             display: block;
+             width: 100%;
+             height: auto;
+             max-height: 400px; /* Add this line to limit image height */
+             object-fit: contain; /* Add this line to maintain aspect ratio */
+         }
+         .embla__slide__caption {
+             position: absolute;
+             bottom: 5px; /* Reduced from 10px */
+             left: 5px; /* Reduced from 10px */
+             right: 5px; /* Reduced from 10px */
+             padding: 3px; /* Reduced from 5px */
+             background: rgba(0, 0, 0, 0.5);
+             color: white;
+             text-align: center;
+             font-size: 0.8em; /* Add this line to reduce font size */
+         }
+        .embla__dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px; /* Space between dots and carousel */
+        }
+
+        .embla__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            padding: 0;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .embla__dot--selected {
+            background-color: white;
+            transform: scale(1.5);
+        }
+       </style>
 </head>
 <body>
     <div class="container">
@@ -146,17 +235,22 @@
                     <a href="https://ondora.xyz" target="_blank"><img src="./dora.png" alt="Dora" style="width: 30px; height: 30px; vertical-align: middle;"></a>
                     <a href="https://github.com/rhizonymph" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://www.youtube.com/channel/UCUq5EEAc8-fvqnQDVK2cnLw" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://twitter.com/rhizonymph" target="_blank"><i class="fab fa-x-twitter"></i></a>                    
+                    <a href="https://twitter.com/rhizonymph" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/rhizonymph" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://bsky.app/profile/rhizonymph.com" target="_blank"><svg class="bluesky-logo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 568 501" style="width: 24px; height: auto; vertical-align: middle;">
+                        <title>Bluesky butterfly logo</title>
+                        <path fill="currentColor" d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"></path>
+                    </svg></a>
                     <a href="https://soundcloud.com/rhizonymph" target="_blank"><i class="fab fa-soundcloud"></i></a>
                     <a href="https://zora.co/rhizonymph" target="_blank"><img src="./zorb.png" alt="Zora" style="width: 24px; height: 24px; vertical-align: middle;"></a>
                 </div>
             </div>
             <div class="content-wrapper">
                 <div class="nav-container">
-                    <div class="profile-pic">
+                    <div class="profile-pic" id="profile-pic">
                         <img src="https://avatars.githubusercontent.com/u/82485126?s=400&u=509be5fe507d70ed0e9d7baf04f6a77e94de4a09&v=4" alt="Profile Picture">
                     </div>
-                    <div class="nav-item" style="top: 0%; left: 50%; transform: translateX(-50%);">                        
+                    <div class="nav-item" style="top: 0%; left: 50%; transform: translateX(-50%);">
                         <a href="#my-art">My Art</a>
                     </div>
                     <div class="nav-item" style="top: 25%; right: 5%;">
@@ -176,7 +270,7 @@
                     <div id="who-am-i" class="section active">
                         <h1>Who am I?</h1>
                         <p>
-                            My name is Nymph. I'm a trans catgirl technomancer working in crypto but am also active in VR and AI. 
+                            My name is Nymph. I'm a trans catgirl technomancer working in crypto but am also active in VR and AI.
                             I'm a producer, rapper, and visual artist. I identify as a rhizomatic cartographer. What the fuck does that mean? Well,
                             I am quite taken with the concept of the Rhizome from the post-modern philosophy of Deleuze
                             and Guatarri. They present a framework in opposition to "aboristic" (tree-like) frameworks that
@@ -186,38 +280,38 @@
                             created by unique multiplicities and helping to bring to light the connections that can be drawn from there.
                         </p>
                         <p>
-                            Thus, I am a rhizomatic cartographer. I spend my spare time that isn't used on creating music and art learning 
+                            Thus, I am a rhizomatic cartographer. I spend my spare time that isn't used on creating music and art learning
                             about anything and everything. I spend my days with papers, podcasts, youtube videos, and audiobooks on
                             everything. Physics, engineering, AI, philosophy, religion, history, psychology, I mean it when I say everything.
                             I do this in an effort to bring perspective to my art and to see what I think the future will look like.
                             Being a part of building it is important to me, as well as helping others to see what parts of it they
                             want to build. I hope to communicate this through my art, writing, and by generally talking about what I
-                            have passion for. 
+                            have passion for.
                         </p>
                     </div>
                     <div id="what-i-do" class="section">
                         <h1>What do I do?</h1>
                         <p>
-                            Professionally I'm an engineer at Search on Dora, where we build a multichain search engine.                             
+                            Professionally I'm an engineer at Search on Dora, where we build a multichain search engine.
                             I have been fairly quiet about working in crypto for a while but I do firmly believe that
-                            there is a lot that blockchain based applications can do to change the power dynamics of a 
+                            there is a lot that blockchain based applications can do to change the power dynamics of a
                             digital world. That won't happen in a fragmented world where the UX requires the user
                             to keep track of every chain, their explorer, contract addresses for protocols, frontend URLs, etc. We aim to fix that. We've come
                             a long way and I'm genuinely proud of our site, but also we're just getting started and I'm very excited
-                            to continue building it into a portal for for users, artists, and researchers.                                                       
+                            to continue building it into a portal for for users, artists, and researchers.
                         </p>
                         <p>
                             I make music with Ableton, a Push 2, and Arturia midi controllers. I write my own lyrics and
                             rap/sing over the beats I make. I'm starting to use Stable Audio but I've wanted to take my
                             time with figuring out how to fit it into my workflow and compare it to the traditional methods
-                            that I know and love as well as learn more about traditional production itself so I could see the connections better.                            
+                            that I know and love as well as learn more about traditional production itself so I could see the connections better.
                         </p>
                         <p>
                             I make visual art with ComfyUI, Pixel Composer, Krita, Blender, and Touch Designer. Sometimes
                             I even paint! I really got back into it visual art so that I could make visuals for the music,
                             so these will often intersect. I also dream of creating narrative animations with my own scoring,
                             story telling has been around longer than writing and I want to understand how to use it to convey
-                            my messages more effectively.                             
+                            my messages more effectively.
                         </p>
                     </div>
                     <div id="why-care" class="section">
@@ -240,37 +334,105 @@
                     </div>
                     <div id="my-music" class="section">
                         <h1>My Music</h1>
-                        <p>                            
-                            <iframe width="560" 
-                            height="315" 
-                            src="https://www.youtube.com/embed/IO9Dk887xYg" 
-                            frameborder="0" 
-                            allow="picture-in-picture" 
+                        <p>
+                            <iframe width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/IO9Dk887xYg"
+                            frameborder="0"
+                            allow="picture-in-picture"
                             allowfullscreen>
-                            </iframe>  
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/YO2XOCHoNrw?si=S8Y8mCeDEOyl67S0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                         
-                        </p>                         
+                            </iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/YO2XOCHoNrw?si=S8Y8mCeDEOyl67S0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </p>
                         </p>
                     </div>
                     <div id="my-art" class="section">
-                        <p>
-                            Visual Art: <br><br>
-                            <a href="https://zora.co/collect/zora:0xeacd0d149c69a26bc5d52639270307970d12f9a3/1"><img src="art/ChurchOfChaos.png" width="512" height="342"></a>
-                            <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/4"><img src="art/Looking.png" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/1"><img src="art/AD_00011.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/2"><img src="art/GlitchGradientBranchesSmall.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/3"><img src="art/cubes.webp" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x2d80c7a65fef4c8f67cbc831363a7b3691dfb6aa/1"><img src="art/progress.webp" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x2d80c7a65fef4c8f67cbc831363a7b3691dfb6aa/2"><img src="art/It'sGoingToBeOkay.gif" width="256" height="256"></a>                                                        
-                            <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/1"><img src="art/lasers1_small.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/2"><img src="art/lasers2_small.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/3"><img src="art/lasers3_small.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x9eb812752cbee981e3fb590a9ae0b1aa5d7a109a/1"><img src="art/Hyperreal Technology 1.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/2"><img src="art/AbstractExpressionsOfMySoulPiece2_small.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/3"><img src="art/AbstractExpressionsOfMySoulPiece3_small.gif" width="256" height="256"></a>
-                            <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/4"><img src="art/AbstractExpressionsOfMySoulPiece4_small.gif" width="256" height="256"></a>
-                            
-                        </p>
+                        <div class="art-header">
+                            <button class="embla__button embla__button--prev">Previous</button>
+                            <h1>My Art</h1>
+                            <button class="embla__button embla__button--next">Next</button>
+                        </div>
+
+                        <div class="embla">
+                             <div class="embla__dots"></div>
+                            <div class="embla__viewport">
+                                <div class="embla__container">
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0xeacd0d149c69a26bc5d52639270307970d12f9a3/1">
+                                            <img src="art/ChurchOfChaos.png" alt="Church of Chaos" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/4">
+                                            <img src="art/Looking.png" alt="Looking" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/1">
+                                            <img src="art/AD_00011.gif" alt="AD_00011" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/2">
+                                            <img src="art/GlitchGradientBranchesSmall.gif" alt="Glitch Gradient Branches" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0xc8eaccdb8bbc79da37867eb68e58d1824d5c24e1/3">
+                                            <img src="art/cubes.webp" alt="Cubes" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x2d80c7a65fef4c8f67cbc831363a7b3691dfb6aa/1">
+                                            <img src="art/progress.webp" alt="Progress" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x2d80c7a65fef4c8f67cbc831363a7b3691dfb6aa/2">
+                                            <img src="art/It'sGoingToBeOkay.gif" alt="It's Going To Be Okay" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/1">
+                                            <img src="art/lasers1_small.gif" alt="Lasers 1" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/2">
+                                            <img src="art/lasers2_small.gif" alt="Lasers 2" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x4e16fc00229d15481a1228f715737fa9b579e61b/3">
+                                            <img src="art/lasers3_small.gif" alt="Lasers 3" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x9eb812752cbee981e3fb590a9ae0b1aa5d7a109a/1">
+                                            <img src="art/Hyperreal Technology 1.gif" alt="Hyperreal Technology 1" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/2">
+                                            <img src="art/AbstractExpressionsOfMySoulPiece2_small.gif" alt="Abstract Expressions Of My Soul Piece 2" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/3">
+                                            <img src="art/AbstractExpressionsOfMySoulPiece3_small.gif" alt="Abstract Expressions Of My Soul Piece 3" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <a href="https://zora.co/collect/zora:0x3aa1019529c795cc3f4a6418e38f667b13cbae37/4">
+                                            <img src="art/AbstractExpressionsOfMySoulPiece4_small.gif" alt="Abstract Expressions Of My Soul Piece 4" class="embla__slide__img">
+                                        </a>
+                                    </div>
+                                    <div class="embla__slide">
+                                        <img src="art/alchemical.png" alt="Alchemical circles" class="embla__slide__img">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="inspirations" class="section">
                         <h1>Who inspires my work?</h1>
@@ -290,7 +452,7 @@
                             <b>Visual Artists</b>:<br>
                             photonisdead, Deko/Oseanworld, PurzBeats, celestialmaze, Machine Delusions, cersperse,
                             olegchomp, Empress Trash, Minimal Macbeth, Valeforic,
-                            countless mangaka and cartoon artists, 
+                            countless mangaka and cartoon artists,
                         </p>
                     </div>
                 </div>
@@ -308,6 +470,115 @@
                 document.getElementById(targetId).classList.add('active');
             });
         });
+
+        const addDotBtnsAndClickHandlers = (emblaApi, dotsNode) => {
+            let dotNodes = [];
+
+            const addDotBtnsWithClickHandlers = () => {
+                dotsNode.innerHTML = emblaApi
+                    .scrollSnapList()
+                    .map(() => '<button class="embla__dot" type="button"></button>')
+                    .join('');
+
+                dotNodes = Array.from(dotsNode.querySelectorAll('.embla__dot'));
+                dotNodes.forEach((dotNode, index) => {
+                    dotNode.addEventListener('click', () => emblaApi.scrollTo(index), false);
+                });
+            };
+
+            const toggleDotBtnsActive = () => {
+                const previous = emblaApi.previousScrollSnap();
+                const selected = emblaApi.selectedScrollSnap();
+                dotNodes[previous].classList.remove('embla__dot--selected');
+                dotNodes[selected].classList.add('embla__dot--selected');
+            };
+
+            emblaApi
+                .on('init', addDotBtnsWithClickHandlers)
+                .on('reInit', addDotBtnsWithClickHandlers)
+                .on('init', toggleDotBtnsActive)
+                .on('reInit', toggleDotBtnsActive)
+                .on('select', toggleDotBtnsActive);
+
+            return () => {
+                dotsNode.innerHTML = '';
+            };
+        };
+
+        const addTogglePrevNextBtnsActive = (emblaApi, prevBtn, nextBtn) => {
+            const togglePrevNextBtnsState = () => {
+                if (emblaApi.canScrollPrev()) prevBtn.removeAttribute('disabled');
+                else prevBtn.setAttribute('disabled', 'disabled');
+
+                if (emblaApi.canScrollNext()) nextBtn.removeAttribute('disabled');
+                else nextBtn.setAttribute('disabled', 'disabled');
+            };
+
+            emblaApi
+                .on('select', togglePrevNextBtnsState)
+                .on('init', togglePrevNextBtnsState)
+                .on('reInit', togglePrevNextBtnsState);
+
+            return () => {
+                prevBtn.removeAttribute('disabled');
+                nextBtn.removeAttribute('disabled');
+            };
+        };
+
+        const addPrevNextBtnsClickHandlers = (emblaApi, prevBtn, nextBtn) => {
+            prevBtn.addEventListener('click', emblaApi.scrollPrev, false);
+            nextBtn.addEventListener('click', emblaApi.scrollNext, false);
+
+            const removeTogglePrevNextBtnsActive = addTogglePrevNextBtnsActive(
+                emblaApi,
+                prevBtn,
+                nextBtn
+            );
+
+            return () => {
+                removeTogglePrevNextBtnsActive();
+                prevBtn.removeEventListener('click', emblaApi.scrollPrev, false);
+                nextBtn.removeEventListener('click', emblaApi.scrollNext, false);
+            };
+        };
+
+        function initEmblaCarousel() {
+            const emblaNode = document.querySelector('.embla');
+            const viewportNode = emblaNode.querySelector('.embla__viewport');
+            const prevBtnNode = emblaNode.parentElement.querySelector('.embla__button--prev');
+            const nextBtnNode = emblaNode.parentElement.querySelector('.embla__button--next');
+            const dotsNode = emblaNode.querySelector('.embla__dots');
+
+            const emblaApi = EmblaCarousel(viewportNode, { loop: true });
+
+            const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+                emblaApi,
+                prevBtnNode,
+                nextBtnNode
+            );
+            const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+                emblaApi,
+                dotsNode
+            );
+
+            emblaApi.on('destroy', removePrevNextBtnsClickHandlers);
+            emblaApi.on('destroy', removeDotBtnsAndClickHandlers);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const profilePic = document.getElementById('profile-pic');
+            profilePic.addEventListener('click', function() {
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById('who-am-i').classList.add('active');
+            });
+        });
+        // Check if the DOM is already loaded
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initEmblaCarousel);
+        } else {
+            initEmblaCarousel();
+        }
     </script>
 </body>
 </html>
