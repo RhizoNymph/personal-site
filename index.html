@@ -54,12 +54,33 @@
             padding: 20px;
             border-radius: 5px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
         }
-        .content {
-            text-align: left;
-            max-width: 600px; /* Adjust this value as needed */
+
+        .left-column {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .current-info {
             width: 100%;
+            font-size: 0.9em;
+        }
+
+        .current-info h3 {
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+
+        .current-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .content {
+            width: 55%;
+            text-align: left;
         }
         .content h1 {
             text-align: center;
@@ -246,6 +267,7 @@
                 </div>
             </div>
             <div class="content-wrapper">
+                <div class="left-column">
                 <div class="nav-container">
                     <div class="profile-pic" id="profile-pic">
                         <img src="https://avatars.githubusercontent.com/u/82485126?s=400&u=509be5fe507d70ed0e9d7baf04f6a77e94de4a09&v=4" alt="Profile Picture">
@@ -265,6 +287,25 @@
                     <div class="nav-item" style="top: 25%; left: 5%;">
                         <a href="#inspirations">Who inspires me?</a>
                     </div>
+
+                </div>
+                <div class="current-info">
+                        <h3>Currently studying:</h3>
+                        <ul>
+                            <li>Cryptographic proof systems</li>
+                            <li>Intent-based coordination systems</li>
+                            <li>Existentialist and Postmodern philosophy</li>
+                            <li>CAD/3D Printing/Microcontrollers</li>
+                            <li>Drone piloting and automation</li>
+                        </ul>
+                        <h3>Currently building:</h3>
+                        <ul>
+                            <li>ondora.xyz</li>
+                            <li>ColBERT based LLM RAG plugin for Obsidian</li>
+                            <li>ComfyUI nodes and custom AI interfaces</li>
+                            <li>Tools for managing and labeling data</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="content">
                     <div id="who-am-i" class="section active">
@@ -282,7 +323,7 @@
                         <p>
                             Thus, I am a rhizomatic cartographer. I spend my spare time that isn't used on creating music and art learning
                             about anything and everything. I spend my days with papers, podcasts, youtube videos, and audiobooks on
-                            everything. Physics, engineering, AI, philosophy, religion, history, psychology, I mean it when I say everything.
+                            everything that strikes my fancy, which is pretty much just everything.
                             I do this in an effort to bring perspective to my art and to see what I think the future will look like.
                             Being a part of building it is important to me, as well as helping others to see what parts of it they
                             want to build. I hope to communicate this through my art, writing, and by generally talking about what I
@@ -293,18 +334,22 @@
                         <h1>What do I do?</h1>
                         <p>
                             Professionally I'm an engineer at Search on Dora, where we build a multichain search engine.
-                            I have been fairly quiet about working in crypto for a while but I do firmly believe that
-                            there is a lot that blockchain based applications can do to change the power dynamics of a
-                            digital world. That won't happen in a fragmented world where the UX requires the user
-                            to keep track of every chain, their explorer, contract addresses for protocols, frontend URLs, etc. We aim to fix that. We've come
-                            a long way and I'm genuinely proud of our site, but also we're just getting started and I'm very excited
-                            to continue building it into a portal for for users, artists, and researchers.
+                            I firmly believe that there is a lot that blockchain and cryptographic proof based applications
+                            can do to change the power dynamics of our digital world. Frankly, I'm tired of pretending I'm
+                            ashamed of my industry.
+
+                            I plan to write about the positive futures that I envision being enabled by the fundamental
+                            changes in verifiability, information flow control, and access to data that are quickly coming
+                            to fruition and changing the landscape of crypto forever. It is NOT all memecoins, we cypherpunks
+                            are still here and aren't leaving.
                         </p>
                         <p>
                             I make music with Ableton, a Push 2, and Arturia midi controllers. I write my own lyrics and
-                            rap/sing over the beats I make. I'm starting to use Stable Audio but I've wanted to take my
-                            time with figuring out how to fit it into my workflow and compare it to the traditional methods
-                            that I know and love as well as learn more about traditional production itself so I could see the connections better.
+                            rap/sing over the beats I make.
+
+                            I'm starting to use Stable Audio but I'm taking my time and haven't actually included AI in any
+                            music I've released. I'll try to make it clear when I do. I can't imagine ever using AI for lyrics,
+                            the process of writing them is one of the most therapeutic things I have in my life. Fuck a ghost writer, AI or not.
                         </p>
                         <p>
                             I make visual art with ComfyUI, Pixel Composer, Krita, Blender, and Touch Designer. Sometimes
